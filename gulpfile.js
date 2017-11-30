@@ -7,7 +7,7 @@ var cssnano = require('gulp-cssnano'); // minified .css files
 var imagemin = require('gulp-imagemin'); // optimasi gambar
 var cache = require('gulp-cache');
 var del = require('del');
-var runSequence = require('run-sequence');
+var runSequence = require('run-sequence').use(gulp);
 
 gulp.task('sass', function() {
 	return gulp.src('app/scss/**/*.scss')
@@ -64,7 +64,7 @@ gulp.task('clean:dist', function() {
 
 gulp.task('build', function (callback) {
   runSequence('clean:dist', 
-    ['sass', 'useref', 'img'],
+    ['sass', 'optimasi', 'img'],
     callback
   )
 })
